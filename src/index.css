@@ -1,4 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens you can tweak */
 :root {
+  --ring: 0 0% 63%;
+  --border: 220 14% 90%;
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -11,6 +18,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.input-base {
+  @apply block w-full rounded-xl outline-none disabled:cursor-not-allowed;
 }
 
 a {
