@@ -1,17 +1,14 @@
-/// <reference types="vitest/config" />
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-
 export default defineConfig({
-  plugins: [react()],
-  test: {
-    environment: 'jsdom',
-    setupFiles: './vitest.setup.ts',
-    css: true,
-    globals: true,
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
 });
