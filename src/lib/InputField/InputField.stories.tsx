@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
 import InputField from './InputField';
 import type { InputFieldProps } from './InputField';
 
@@ -15,7 +14,9 @@ const meta: Meta<InputFieldProps> = {
     placeholder: 'you@example.com',
     variant: 'outlined',
     size: 'md',
-    onChange: fn(),
+    onChange: (e) => {
+      console.log('Input changed:', e.target.value);
+    },
   },
   argTypes: {
     variant: {
