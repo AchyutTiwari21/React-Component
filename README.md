@@ -10,7 +10,7 @@ Tech: React + TypeScript + TailwindCSS + Storybook + Vitest + RTL
 ```bash
 npm i
 npm run dev         # Vite dev
-npm run story       # Storybook
+npm run storybook   # Storybook
 npm run test        # Vitest + RTL
 npm run build       # app build
 npm run build-storybook

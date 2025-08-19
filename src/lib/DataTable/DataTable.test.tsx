@@ -1,4 +1,5 @@
 import { render, screen, fireEvent, within } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import { describe, it, expect, vi } from 'vitest'
 import DataTable from './DataTable'
 import type { Column } from './types'
@@ -88,7 +89,7 @@ describe('DataTable', () => {
     render(<DataTable data={[]} columns={columns} loading />)
     
     // Should show 5 skeleton rows
-    const skeletonRows = document.querySelectorAll('.animate-pulse')
+    const skeletonRows = document.querySelectorAll('tr.animate-pulse')
     expect(skeletonRows).toHaveLength(5)
   })
 
