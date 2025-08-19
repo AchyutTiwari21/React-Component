@@ -1,69 +1,51 @@
-# React + TypeScript + Vite
+# React UI Components – InputField & DataTable
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Tech: React + TypeScript + TailwindCSS + Storybook + Vitest + RTL
 
-Currently, two official plugins are available:
+## Features
+- **InputField**: label, helper, error, disabled/invalid/loading, variants (filled/outlined/ghost), sizes (sm/md/lg), optional **clear** & **password toggle**, light/dark.
+- **DataTable**: typed columns, sorting, row selection (multi), loading & empty states, responsive, ARIA (`aria-sort`, labels).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
+```bash
+npm i
+npm run dev         # Vite dev
+npm run story       # Storybook
+npm run test        # Vitest + RTL
+npm run build       # app build
+npm run build-storybook
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Structure
 ```
+src/
+  lib/
+    InputField/
+      InputField.tsx
+      InputField.stories.tsx
+      InputField.test.tsx
+    DataTable/
+      DataTable.tsx
+      DataTable.stories.tsx
+      DataTable.test.tsx
+      types.ts
+  utils/cn.ts
+  App.tsx
+  main.tsx
+  index.css
+```
+
+## Approach
+- **Accessibility**: Proper label → input id, `aria-invalid`, `aria-describedby`; table headers announce `aria-sort`.
+- **Styling**: Tailwind with variants & sizes; dark mode via `dark` class.
+- **Typing**: Generic `DataTable<T>` with `Column<T>` ensures compile-time safety.
+- **Tests**: Behavior tests for error states, clear button, sorting, and selection.
+
+## Deploying Storybook
+Chromatic: `npx chromatic --project-token=<token>` after `npm run build-storybook`.
+
+Or deploy the static `storybook-static` to Vercel/Netlify.
+
+## Notes
+- InputField supports controlled and uncontrolled usage. For controlled clear, pass `onClear` to reset parent state.
+- Selection is multi-select. Hook into `onRowSelect` for current selection.
