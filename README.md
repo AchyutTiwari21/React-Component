@@ -16,6 +16,47 @@ npm run build       # app build
 npm run build-storybook
 ```
 
+## Usage
+
+### InputField
+```tsx
+import { InputField } from './lib/InputField/InputField';
+
+// Basic usage
+<InputField 
+  label="Email" 
+  placeholder="you@example.com" 
+  helperText="We'll never share your email." 
+  variant="outlined"
+  clearable
+  onClear={() => console.log('Cleared!')}
+/>
+```
+
+### DataTable
+```tsx
+import { DataTable } from './lib/DataTable/DataTable';
+import type { Column } from './lib/DataTable/types';
+
+type User = { id: number; name: string; email: string; age: number }
+
+const columns: Column<User>[] = [
+  { key: 'name', title: 'Name', dataIndex: 'name', sortable: true },
+  { key: 'email', title: 'Email', dataIndex: 'email' },
+  { key: 'age', title: 'Age', dataIndex: 'age', sortable: true },
+]
+
+// Basic usage
+<DataTable<User> 
+  data={users} 
+  columns={columns} 
+  selectable 
+  onRowSelect={(rows) => console.log('Selected rows:', rows)}
+  loading={isLoading}
+  emptyText="No data available"
+/>
+```
+
 ## Structure
 ```
 src/
