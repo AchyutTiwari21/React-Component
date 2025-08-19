@@ -61,8 +61,8 @@ describe('InputField', () => {
   });
 
   test('applies custom className', () => {
-    render(<InputField label="Test" className="custom-class" />);
-    const container = screen.getByLabelText('Test').closest('div');
-    expect(container).toHaveClass('custom-class');
+    const { container } = render(<InputField label="Test" className="custom-class" />);
+    const outerContainer = container.firstChild;
+    expect(outerContainer).toHaveClass('custom-class');
   });
 });
