@@ -82,11 +82,6 @@ src/
 - **Typing**: Generic `DataTable<T>` with `Column<T>` ensures compile-time safety.
 - **Tests**: Behavior tests for error states, clear button, sorting, and selection.
 
-## Deploying Storybook
-Chromatic: `npx chromatic --project-token=<token>` after `npm run build-storybook`.
-
-Or deploy the static `storybook-static` to Vercel/Netlify.
-
 ## Notes
 - InputField supports controlled and uncontrolled usage. For controlled clear, pass `onClear` to reset parent state.
 - Selection is multi-select. Hook into `onRowSelect` for current selection.
