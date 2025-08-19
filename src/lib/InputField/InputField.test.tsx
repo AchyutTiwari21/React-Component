@@ -1,6 +1,6 @@
-import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, test, expect } from 'vitest';
 import InputField from './InputField';
 
 describe('InputField', () => {
@@ -44,7 +44,7 @@ describe('InputField', () => {
   });
 
   test('calls onChange when input changes', async () => {
-    const handleChange = jest.fn();
+    const handleChange = vi.fn();
     const user = userEvent.setup();
     render(<InputField label="Test" onChange={handleChange} />);
     
