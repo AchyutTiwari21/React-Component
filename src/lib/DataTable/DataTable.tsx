@@ -78,10 +78,10 @@ function DataTable<T extends Record<string, any>>({
   }
 
   return (
-    <div className={cn('w-full overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-700 shadow-xl bg-white dark:bg-slate-800 transition-all duration-300', className)}>
+    <div className={cn('w-full overflow-hidden rounded-3xl border border-primary shadow-xl bg-card transition-all duration-300', className)}>
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
-          <thead className="bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-700">
+          <thead className="bg-secondary">
             <tr>
               {selectable && (
                 <th scope="col" className="w-12 px-6 py-4">
@@ -109,8 +109,8 @@ function DataTable<T extends Record<string, any>>({
                     scope="col"
                     aria-sort={ariaSort}
                     className={cn(
-                      'px-6 py-4 font-bold text-slate-700 dark:text-slate-200 transition-all duration-200',
-                      col.sortable && 'cursor-pointer select-none hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-700'
+                      'px-6 py-4 font-bold text-secondary-foreground transition-all duration-200',
+                      col.sortable && 'cursor-pointer select-none hover:text-popover hover:bg-secondary'
                     )}
                     onClick={() => toggleSort(col.dataIndex, col.sortable)}
                   >
@@ -119,7 +119,7 @@ function DataTable<T extends Record<string, any>>({
                       {col.sortable && (
                         <div className={cn(
                           'flex flex-col items-center justify-center w-4 h-4 transition-all duration-200',
-                          isSorted ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400 group-hover:text-slate-600'
+                          isSorted ? 'text-popover' : 'text-foreground'
                         )}>
                           {sortKey !== col.dataIndex || !order ? (
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,20 +142,20 @@ function DataTable<T extends Record<string, any>>({
               })}
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-700">
+          <tbody className="divide-y divide-primary">
             {loading ? (
               Array.from({ length: 5 }).map((_, i) => (
                 <tr key={`skeleton-${i}`} className="animate-pulse">
                   {selectable && (
                     <td className="px-6 py-4">
                       <div className="flex items-center justify-center">
-                        <div className="h-4 w-4 rounded bg-slate-200 dark:bg-slate-700" />
+                        <div className="h-4 w-4 rounded bg-card" />
                       </div>
                     </td>
                   )}
                   {columns.map((c) => (
                     <td key={c.key} className="px-6 py-4">
-                      <div className="h-4 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" style={{ width: `${Math.random() * 60 + 40}%` }} />
+                      <div className="h-4 bg-cards rounded animate-pulse" style={{ width: `${Math.random() * 60 + 40}%` }} />
                     </td>
                   ))}
                 </tr>
@@ -171,8 +171,8 @@ function DataTable<T extends Record<string, any>>({
                 <tr
                   key={i}
                   className={cn(
-                    'group transition-all duration-200 hover:bg-slate-50 dark:hover:bg-slate-700/50',
-                    selected.has(i) && 'bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500',
+                    'group transition-all duration-200 hover:bg-primary',
+                    selected.has(i) && 'bg-card border-l-4 border-blue-500',
                     selectable && 'cursor-pointer'
                   )}
                   onClick={() => toggleRow(i)}
@@ -192,7 +192,7 @@ function DataTable<T extends Record<string, any>>({
                     </td>
                   )}
                   {columns.map((col) => (
-                    <td key={col.key} className="px-6 py-4 text-slate-800 dark:text-slate-200 font-medium group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors duration-200">
+                    <td key={col.key} className="px-6 py-4 text-card-foreground font-medium group-hover:text-secondary-foreground group-hover:bg-secondary transition-colors duration-200">
                       {String(row[col.dataIndex] ?? '')}
                     </td>
                   ))}

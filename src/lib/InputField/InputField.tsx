@@ -28,16 +28,16 @@ const sizeMap = {
 
 const variantMap = (invalid?: boolean) => ({
   filled: cn(
-    'bg-slate-50 dark:bg-slate-800/60 focus-within:bg-white dark:focus-within:bg-slate-800',
+    'bg-card focus-within:bg-white dark:focus-within:bg-slate-800',
     'border-2 border-transparent focus-within:border-blue-500 dark:focus-within:border-blue-400',
     'shadow-sm focus-within:shadow-lg',
     invalid && 'border-red-500 bg-red-50 dark:bg-red-900/20 focus-within:border-red-500'
   ),
   outlined: cn(
-    'bg-white dark:bg-slate-900 border-2 shadow-sm focus-within:shadow-lg',
+    'bg-card border-2 shadow-sm focus-within:shadow-lg',
     invalid 
       ? 'border-red-500 focus-within:border-red-500' 
-      : 'border-slate-200 dark:border-slate-700 focus-within:border-blue-500 dark:focus-within:border-blue-400'
+      : 'border-primary focus-within:border-blue-500 dark:focus-within:border-blue-400'
   ),
   ghost: cn(
     'bg-transparent border-b-2 rounded-none shadow-none',
@@ -103,7 +103,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
     return (
       <div className={cn('w-full', className)}>
         {label && (
-          <label htmlFor={inputId} className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-300">
+          <label htmlFor={inputId} className="mb-2 block text-sm font-semibold text-foreground">
             {label}
           </label>
         )}
@@ -122,8 +122,8 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
             id={inputId}
             className={cn(
               'flex-1 min-w-0 bg-transparent border-none focus:outline-none transition-colors duration-200',
-              'placeholder:text-slate-400 dark:placeholder:text-slate-500',
-              'text-slate-900 dark:text-slate-100',
+              'placeholder:text-card-foreground',
+              'text-foreground',
               disabled ? 'cursor-not-allowed' : 'cursor-text',
               'text-base leading-6'
             )}
@@ -161,7 +161,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
                 type="button"
                 aria-label="Clear input"
                 onClick={handleClear}
-                className="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 dark:text-slate-500 dark:hover:text-slate-300 dark:hover:bg-slate-800 transition-all duration-200 transform hover:scale-110"
+                className="p-1 rounded-full bg-card text-card-foreground hover:bg-secondary hover:text-secondary-foreground transition-all duration-200 transform hover:scale-110"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +183,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
         </div>
 
         {helperText && !invalid && (
-          <p id={helpId} className="mt-2 text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
+          <p id={helpId} className="mt-2 text-sm text-foreground flex items-center gap-1">
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
             </svg>
@@ -191,7 +191,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
           </p>
         )}
         {invalid && errorMessage && (
-          <p id={errId} className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1 animate-pulse">
+          <p id={errId} className="mt-2 text-sm text-red-600 flex items-center gap-1 animate-pulse">
             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
             </svg>
