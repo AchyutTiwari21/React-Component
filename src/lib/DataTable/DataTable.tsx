@@ -192,7 +192,7 @@ function DataTable<T extends Record<string, any>>({
                     </td>
                   )}
                   {columns.map((col) => (
-                    <td key={col.key} className="px-6 py-4 text-card-foreground font-medium group-hover:text-secondary-foreground group-hover:bg-secondary transition-colors duration-200">
+                    <td key={col.key} className="px-6 py-4 bg-card text-card-foreground font-medium group-hover:text-secondary-foreground group-hover:bg-secondary transition-colors duration-200">
                       {String(row[col.dataIndex] ?? '')}
                     </td>
                   ))}
