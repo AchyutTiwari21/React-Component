@@ -28,7 +28,7 @@ const sizeMap = {
 
 const variantMap = (invalid?: boolean) => ({
   filled: cn(
-    'bg-card focus-within:bg-white dark:focus-within:bg-slate-800',
+    'bg-card focus-within:bg-background',
     'border-2 border-transparent focus-within:border-blue-500 dark:focus-within:border-blue-400',
     'shadow-sm focus-within:shadow-lg',
     invalid && 'border-red-500 bg-red-50 dark:bg-red-900/20 focus-within:border-red-500'
@@ -148,7 +148,7 @@ const InputField = React.forwardRef<HTMLInputElement, InputFieldProps>(
                 type="button"
                 aria-label={showPwd ? 'Hide password' : 'Show password'}
                 onClick={() => setShowPwd((s) => !s)}
-                className="text-sm font-medium text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors duration-200 cursor-pointer select-none"
+                className="text-sm font-medium text-forground hover:text-secondary-foreground transition-colors duration-200 cursor-pointer select-none"
                 disabled={disabled}
                 tabIndex={0}
               >

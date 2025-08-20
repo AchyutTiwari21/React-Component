@@ -94,7 +94,7 @@ function DataTable<T extends Record<string, any>>({
                         if (el) el.indeterminate = Boolean(someChecked)
                       }}
                       onChange={handleHeaderCheck}
-                      className="w-4 h-4 text-blue-600 bg-white border-2 border-slate-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-slate-800 focus:ring-2 dark:bg-slate-700 dark:border-slate-600 transition-all duration-200 hover:scale-110"
+                      className="w-4 h-4 bg-card text-card-foreground border-2 border-primary rounded focus:ring-2 transition-all duration-200 hover:scale-110"
                     />
                   </div>
                 </th>
@@ -178,7 +178,7 @@ function DataTable<T extends Record<string, any>>({
                   onClick={() => toggleRow(i)}
                 >
                   {selectable && (
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-4 bg-card text-card-foreground group-hover:text-secondary-foreground group-hover:bg-secondary transition-all duration-200 hover:scale-110">
                       <div className="flex items-center justify-center">
                         <input
                           type="checkbox"
@@ -186,7 +186,7 @@ function DataTable<T extends Record<string, any>>({
                           checked={selected.has(i)}
                           onChange={() => toggleRow(i)}
                           onClick={(e) => e.stopPropagation()}
-                          className="w-4 h-4 text-blue-600 bg-white border-2 border-slate-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-slate-800 focus:ring-2 dark:bg-slate-700 dark:border-slate-600 transition-all duration-200 hover:scale-110"
+                          className="w-4 h-4 text-blue-600 bg-card border-2 border-primary rounded"
                         />
                       </div>
                     </td>
