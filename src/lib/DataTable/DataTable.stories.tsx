@@ -69,10 +69,10 @@ export const WithCustomEmptyState: Story = {
     columns,
     emptyText: (
       <div className="flex flex-col items-center gap-2 p-4">
-        <svg className="h-12 w-12 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="h-12 w-12 text-card-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 12H4" />
         </svg>
-        <p className="text-slate-600">No records found</p>
+        <p className="text-card-foreground">No records found</p>
         <button className="mt-2 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
           Add New Item
         </button>

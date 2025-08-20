@@ -18,7 +18,7 @@ const preview: Preview = {
       const isDark = ctx.globals.backgrounds?.value === '#0b0f19'
       return (
         <div className={isDark ? 'dark' : ''}>
-          <div className="min-h-screen bg-white text-slate-900 dark:bg-[#0b0f19] dark:text-slate-100 p-6">
+          <div className="min-h-screen bg-background text-foreground p-6">
             <Story />
           </div>
         </div>
