@@ -155,7 +155,7 @@ function DataTable<T extends Record<string, any>>({
                   )}
                   {columns.map((c) => (
                     <td key={c.key} className="px-6 py-4">
-                      <div className="h-4 bg-cards rounded animate-pulse" style={{ width: `${Math.random() * 60 + 40}%` }} />
+                      <div className="h-4 bg-card rounded animate-pulse" style={{ width: `${Math.random() * 60 + 40}%` }} />
                     </td>
                   ))}
                 </tr>
